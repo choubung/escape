@@ -18,7 +18,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JdbcTest
-@Sql(scripts = {"/schema.sql", "/reservation-repository-test-data.sql"})
+@Sql(scripts = {"/schema.sql", "/repository-test-data.sql"})
 class ReservationJdbcRepositoryTest {
 
     private final ReservationRepository reservationRepository;
