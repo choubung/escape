@@ -1,8 +1,8 @@
 package com.example.roomescape.reservation;
 
+import com.example.roomescape.user.User;
 import lombok.Builder;
 import lombok.Getter;
-import org.h2.engine.User;
 
 @Builder
 @Getter
