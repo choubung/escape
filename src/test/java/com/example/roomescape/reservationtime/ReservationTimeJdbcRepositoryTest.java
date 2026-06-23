@@ -30,7 +30,7 @@ class ReservationTimeJdbcRepositoryTest {
 
         @DisplayName("예약 시간 아이디로 특정 예약 시간을 찾는다.")
         @Test
-        void findReservaitonByIdTest() {
+        void findReservationTimeByIdTest() {
             // given
             Long id = 1L;
 
@@ -43,7 +43,7 @@ class ReservationTimeJdbcRepositoryTest {
 
         @DisplayName("존재하는 모든 예약 시간을 찾는다.")
         @Test
-        void getAllReservationsTest() {
+        void getAllReservationTimesTest() {
             // when
             List<ReservationTime> times = timeRepository.readAllTimes();
 

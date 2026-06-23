@@ -34,7 +34,7 @@ class ReservationJdbcRepositoryTest {
 
         @DisplayName("예약 아이디로 특정 예약을 찾는다.")
         @Test
-        void findReservaitonByIdTest() {
+        void findReservationByIdTest() {
             // given
             Long id = 1L;
 
