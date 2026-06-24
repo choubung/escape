@@ -25,7 +25,7 @@ class ReservationJdbcRepositoryTest {
 
     @Autowired
     public ReservationJdbcRepositoryTest(JdbcTemplate jdbcTemplate) {
-        this.reservationRepository = new ReservationJdbcRepository(jdbcTemplate.getDataSource());
+        this.reservationRepository = new ReservationJdbcRepository(jdbcTemplate);
     }
 
     @Nested

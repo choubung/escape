@@ -20,7 +20,7 @@ class ThemeJdbcRepositoryTest {
 
     @Autowired
     public ThemeJdbcRepositoryTest(JdbcTemplate jdbcTemplate) {
-        this.themeRepository = new ThemeJdbcRepository(jdbcTemplate.getDataSource());
+        this.themeRepository = new ThemeJdbcRepository(jdbcTemplate);
     }
 
     @Nested

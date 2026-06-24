@@ -1,6 +1,5 @@
 package com.example.roomescape.reservationtime;
 
-import com.example.roomescape.reservation.ReservationEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -11,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ReservationTimeJdbcRepository implements ReservationTimeRepository{
+public class ReservationTimeJdbcRepository implements ReservationTimeRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public ReservationTimeJdbcRepository(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public ReservationTimeJdbcRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override

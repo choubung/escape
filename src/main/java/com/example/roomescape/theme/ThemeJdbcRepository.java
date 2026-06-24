@@ -12,8 +12,8 @@ import java.util.Optional;
 public class ThemeJdbcRepository implements ThemeRepository{
     private final JdbcTemplate jdbcTemplate;
 
-    public ThemeJdbcRepository(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public ThemeJdbcRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
