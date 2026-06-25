@@ -39,23 +39,23 @@ class ReservationJdbcRepositoryTest {
             Long id = 1L;
 
             // when
-            ReservationEntity entity = reservationRepository.readReservationById(1L).get();
+            Reservation reservation = reservationRepository.readReservationById(1L).get();
 
             // then
-            assertThat(entity.getDate()).isEqualTo(LocalDate.parse("2026-10-03"));
-            assertThat(entity.getTimeId()).isEqualTo(1);
-            assertThat(entity.getThemeId()).isEqualTo(1);
-            assertThat(entity.getUserId()).isEqualTo(1);
+            assertThat(reservation.getDate()).isEqualTo(LocalDate.parse("2026-10-03"));
+            assertThat(reservation.getReservationTime().getId()).isEqualTo(1);
+            assertThat(reservation.getTheme().getId()).isEqualTo(1);
+            assertThat(reservation.getUser().getId()).isEqualTo(1);
         }
 
         @DisplayName("존재하는 모든 예약을 찾는다.")
         @Test
         void getAllReservationsTest() {
             // when
-            List<ReservationEntity> reservationEntities = reservationRepository.readAllReservations();
+            List<Reservation> reservations = reservationRepository.readAllReservations();
 
             // then
-            assertThat(reservationEntities).hasSize(3);
+            assertThat(reservations).hasSize(3);
         }
 
         @DisplayName("특정 유저의 모든 예약을 찾는다.")
@@ -65,13 +65,11 @@ class ReservationJdbcRepositoryTest {
             User user = User.from(1L, "파도");
 
             // when
-            List<ReservationEntity> entities = reservationRepository.readReservationsByUser(user);
+            List<Reservation> entities = reservationRepository.readReservationsByUser(user);
 
             // then
             assertThat(entities).hasSize(2);
-            assertThat(entities)
-                    .extracting(ReservationEntity::getId)
-                    .contains(1L, 2L);
+            assertThat(entities).extracting(Reservation::getId).contains(1L, 2L);
         }
 
         @DisplayName("특정 슬롯(테마/날짜/시간)의 예약을 찾는다.")
@@ -86,14 +84,14 @@ class ReservationJdbcRepositoryTest {
             Slot slot = new Slot(schedule, theme);
 
             // when
-            ReservationEntity entity = reservationRepository.readReservationsBySlot(slot).get();
+            Reservation reservation = reservationRepository.readReservationsBySlot(slot).get();
 
             // then
-            assertThat(entity.getId()).isEqualTo(3);
-            assertThat(entity.getDate()).isEqualTo(LocalDate.parse("2026-10-03"));
-            assertThat(entity.getTimeId()).isEqualTo(2);
-            assertThat(entity.getThemeId()).isEqualTo(1);
-            assertThat(entity.getUserId()).isEqualTo(2);
+            assertThat(reservation.getId()).isEqualTo(3);
+            assertThat(reservation.getDate()).isEqualTo(LocalDate.parse("2026-10-03"));
+            assertThat(reservation.getReservationTime().getId()).isEqualTo(2);
+            assertThat(reservation.getTheme().getId()).isEqualTo(1);
+            assertThat(reservation.getUser().getId()).isEqualTo(2);
         }
     }
 }
