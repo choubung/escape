@@ -17,7 +17,7 @@ public class UserJdbcRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> readUserById(Long id) {
+    public Optional<User> findUserById(Long id) {
         String sql = """
                 SELECT user_id, user_name
                 FROM users
@@ -30,7 +30,7 @@ public class UserJdbcRepository implements UserRepository {
     }
 
     @Override
-    public List<User> readAllUsers() {
+    public List<User> findAllUsers() {
         String sql = """
                 SELECT user_id, user_name
                 FROM users

@@ -17,7 +17,7 @@ public class ThemeJdbcRepository implements ThemeRepository{
     }
 
     @Override
-    public Optional<Theme> readThemeById(Long id) {
+    public Optional<Theme> findThemeById(Long id) {
         String sql = """
                 SELECT theme_id, title, description, image_url
                 FROM themes
@@ -30,7 +30,7 @@ public class ThemeJdbcRepository implements ThemeRepository{
     }
 
     @Override
-    public List<Theme> readAllThemes() {
+    public List<Theme> findAllThemes() {
         String sql = """
                 SELECT theme_id, title, description, image_url
                 FROM themes 

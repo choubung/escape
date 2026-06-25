@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.test.autoconfigure.JdbcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalTime;
@@ -33,7 +32,7 @@ class ReservationTimeJdbcRepositoryTest {
             Long id = 1L;
 
             // when
-            ReservationTime time = timeRepository.readTimesById(1L).get();
+            ReservationTime time = timeRepository.findTimesById(1L).get();
 
             // then
             assertThat(time.getStartAt()).isEqualTo(LocalTime.of(13, 00));
@@ -43,7 +42,7 @@ class ReservationTimeJdbcRepositoryTest {
         @Test
         void getAllReservationTimesTest() {
             // when
-            List<ReservationTime> times = timeRepository.readAllTimes();
+            List<ReservationTime> times = timeRepository.findAllTimes();
 
             // then
             assertThat(times).hasSize(2);

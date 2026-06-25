@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.test.autoconfigure.JdbcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
@@ -32,7 +31,7 @@ class ThemeJdbcRepositoryTest {
             Long id = 1L;
 
             // when
-            Theme theme = themeRepository.readThemeById(1L).get();
+            Theme theme = themeRepository.findThemeById(1L).get();
 
             // then
             assertThat(theme.getTitle()).isEqualTo("테마 제목");
@@ -44,7 +43,7 @@ class ThemeJdbcRepositoryTest {
         @Test
         void getAllThemesTest() {
             // when
-            List<Theme> times = themeRepository.readAllThemes();
+            List<Theme> times = themeRepository.findAllThemes();
 
             // then
             assertThat(times).hasSize(2);

@@ -34,7 +34,7 @@ class UserJdbcRepositoryTest {
             Long id = 1L;
 
             // when
-            User user = userRepository.readUserById(id).get();
+            User user = userRepository.findUserById(id).get();
 
             // then
             assertThat(user.getId()).isEqualTo(id);
@@ -45,7 +45,7 @@ class UserJdbcRepositoryTest {
         @Test
         void getAllReservationsTest() {
             // when
-            List<User> users = userRepository.readAllUsers();
+            List<User> users = userRepository.findAllUsers();
 
             // then
             assertThat(users).hasSize(2);

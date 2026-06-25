@@ -22,7 +22,7 @@ public class ReservationJdbcRepository implements ReservationRepository {
     }
 
     @Override
-    public Optional<Reservation> readReservationById(Long id) {
+    public Optional<Reservation> findReservationById(Long id) {
         String sql = """
                 SELECT r.reservation_id AS reservation_id, r.reservation_date AS reservation_date, 
                        u.user_id AS user_id, u.user_name AS user_name, 
@@ -40,7 +40,7 @@ public class ReservationJdbcRepository implements ReservationRepository {
     }
 
     @Override
-    public List<Reservation> readAllReservations() {
+    public List<Reservation> findAllReservations() {
         String sql = """
                 SELECT r.reservation_id AS reservation_id, r.reservation_date AS reservation_date, 
                        u.user_id AS user_id, u.user_name AS user_name, 
@@ -56,7 +56,7 @@ public class ReservationJdbcRepository implements ReservationRepository {
     }
 
     @Override
-    public List<Reservation> readReservationsByUser(User user) {
+    public List<Reservation> findReservationsByUser(User user) {
         String sql = """
                 SELECT r.reservation_id AS reservation_id, r.reservation_date AS reservation_date, 
                        u.user_id AS user_id, u.user_name AS user_name, 
@@ -72,7 +72,7 @@ public class ReservationJdbcRepository implements ReservationRepository {
     }
 
     @Override
-    public Optional<Reservation> readReservationsBySlot(Slot slot) {
+    public Optional<Reservation> findReservationsBySlot(Slot slot) {
         String sql = """
                 SELECT r.reservation_id AS reservation_id, r.reservation_date AS reservation_date, 
                        u.user_id AS user_id, u.user_name AS user_name, 

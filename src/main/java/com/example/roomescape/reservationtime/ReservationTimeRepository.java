@@ -4,6 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReservationTimeRepository {
-    Optional<ReservationTime> readTimesById(Long id);
-    List<ReservationTime> readAllTimes();
+    Optional<ReservationTime> findTimesById(Long id);
+    List<ReservationTime> findAllTimes();
 }

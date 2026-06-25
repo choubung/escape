@@ -4,6 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository {
-    Optional<User> readUserById(Long id);
-    List<User> readAllUsers();
+    Optional<User> findUserById(Long id);
+    List<User> findAllUsers();
 }

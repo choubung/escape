@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.test.autoconfigure.JdbcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
@@ -37,7 +36,7 @@ class ReservationJdbcRepositoryTest {
             Long id = 1L;
 
             // when
-            Reservation reservation = reservationRepository.readReservationById(1L).get();
+            Reservation reservation = reservationRepository.findReservationById(1L).get();
 
             // then
             assertThat(reservation.getDate()).isEqualTo(LocalDate.parse("2026-10-03"));
@@ -50,7 +49,7 @@ class ReservationJdbcRepositoryTest {
         @Test
         void getAllReservationsTest() {
             // when
-            List<Reservation> reservations = reservationRepository.readAllReservations();
+            List<Reservation> reservations = reservationRepository.findAllReservations();
 
             // then
             assertThat(reservations).hasSize(3);
@@ -63,7 +62,7 @@ class ReservationJdbcRepositoryTest {
             User user = User.from(1L, "파도");
 
             // when
-            List<Reservation> entities = reservationRepository.readReservationsByUser(user);
+            List<Reservation> entities = reservationRepository.findReservationsByUser(user);
 
             // then
             assertThat(entities).hasSize(2);
@@ -82,7 +81,7 @@ class ReservationJdbcRepositoryTest {
             Slot slot = new Slot(schedule, theme);
 
             // when
-            Reservation reservation = reservationRepository.readReservationsBySlot(slot).get();
+            Reservation reservation = reservationRepository.findReservationsBySlot(slot).get();
 
             // then
             assertThat(reservation.getId()).isEqualTo(3);

@@ -18,7 +18,7 @@ public class ReservationTimeJdbcRepository implements ReservationTimeRepository 
     }
 
     @Override
-    public Optional<ReservationTime> readTimesById(Long id) {
+    public Optional<ReservationTime> findTimesById(Long id) {
         String sql = """
                 SELECT time_id, start_at
                 FROM reservation_times
@@ -31,7 +31,7 @@ public class ReservationTimeJdbcRepository implements ReservationTimeRepository 
     }
 
     @Override
-    public List<ReservationTime> readAllTimes() {
+    public List<ReservationTime> findAllTimes() {
         String sql = """
                 SELECT time_id, start_at
                 FROM reservation_times

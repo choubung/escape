@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReservationRepository {
-    public Optional<Reservation> readReservationById(Long id);
+    Optional<Reservation> findReservationById(Long id);
 
-    public List<Reservation> readAllReservations();
+    List<Reservation> findAllReservations();
 
-    public List<Reservation> readReservationsByUser(User user);
+    List<Reservation> findReservationsByUser(User user);
 
-    public Optional<Reservation> readReservationsBySlot(Slot slot);
+    Optional<Reservation> findReservationsBySlot(Slot slot);
 }
