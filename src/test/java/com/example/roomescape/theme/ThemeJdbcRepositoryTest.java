@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.test.autoconfigure.JdbcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -13,15 +14,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JdbcTest
+@Import(ThemeJdbcRepository.class)
 @Sql(scripts = {"/schema.sql", "/repository-test-data.sql"})
 class ThemeJdbcRepositoryTest {
 
-    private final ThemeRepository themeRepository;
-
     @Autowired
-    public ThemeJdbcRepositoryTest(JdbcTemplate jdbcTemplate) {
-        this.themeRepository = new ThemeJdbcRepository(jdbcTemplate);
-    }
+    private ThemeRepository themeRepository;
 
     @Nested
     @DisplayName("테마 조회 테스트")

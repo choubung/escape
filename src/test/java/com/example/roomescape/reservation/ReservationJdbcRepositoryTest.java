@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.test.autoconfigure.JdbcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -18,15 +19,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @JdbcTest
+@Import(ReservationJdbcRepository.class)
 @Sql(scripts = {"/schema.sql", "/repository-test-data.sql"})
 class ReservationJdbcRepositoryTest {
 
-    private final ReservationRepository reservationRepository;
-
     @Autowired
-    public ReservationJdbcRepositoryTest(JdbcTemplate jdbcTemplate) {
-        this.reservationRepository = new ReservationJdbcRepository(jdbcTemplate);
-    }
+    private ReservationRepository reservationRepository;
 
     @Nested
     @DisplayName("예약 조회 테스트")
